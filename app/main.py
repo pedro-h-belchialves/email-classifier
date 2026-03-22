@@ -1,7 +1,6 @@
 from fastapi import FastAPI
+from app.controllers import router as email_router
 
 app = FastAPI()
 
-@app.get("/")
-def health_check():
-    return {"status": "ok"}
+app.include_router(email_router)
