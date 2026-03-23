@@ -10,16 +10,44 @@ class ClassifyEmailUseCase:
 
     def execute(self, content: str):
         prompt = f"""
-        Classifique o seguinte email como produtivo ou improdutivo
-        e gere uma resposta apropriada.
+        Você é um assistente especializado em classificação de emails.
+
+        Seu objetivo é classificar emails como:
+        - "produtivo" → quando exige ação, resposta ou resolução
+        - "improdutivo" → quando é apenas agradecimento, confirmação ou sem ação necessária
+
+        Exemplos:
+
+        Email: "Obrigado pela ajuda!"
+        Resposta:
+        {{
+        "category": "improdutivo",
+        "suggested_response": "Agradecemos sua mensagem! Ficamos à disposição."
+        }}
+
+        Email: "Preciso de suporte com meu pedido"
+        Resposta:
+        {{
+        "category": "produtivo",
+        "suggested_response": "Recebemos sua solicitação e iremos analisá-la o mais breve possível."
+        }}
+
+        Email: "Só passando para avisar que deu tudo certo"
+        Resposta:
+        {{
+        "category": "improdutivo",
+        "suggested_response": "Ficamos felizes em saber! Qualquer coisa, estamos à disposição."
+        }}
+
+        Agora classifique o seguinte email:
 
         Email:
         {content}
 
         Responda apenas em JSON válido:
         {{
-            "category": "produtivo ou improdutivo",
-            "suggested_response": "resposta aqui"
+        "category": "produtivo ou improdutivo",
+        "suggested_response": "resposta aqui"
         }}
         """
 
@@ -27,6 +55,6 @@ class ClassifyEmailUseCase:
 
         parsed = extract_json(response)
 
-           validated = EmailResponse(**parsed)
+        validated = EmailResponse(**parsed)
 
         return validated
