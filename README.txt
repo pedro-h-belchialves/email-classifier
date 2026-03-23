@@ -1,9 +1,16 @@
-##Documetação do front
+## Documetação do front
 
-#Incialização local:
+# Incialização local:
 rode o comando: "docker compose up -d --build" e o front estará disponívl em http://localhost:3002
 
-#Sobre
+O front estará disponível naa rota: "https://email-classifier-virid-rho.vercel.app/"
+
+## Observação importante!!:
+ - Ao tentar classificar o email pela primeira vez, a requisição demorará cerca de 15 a 25 segundos.
+ isso se dá pois eu subi a api na render, e com isso, caso não seja usada a api entra no modo
+ sleap depois de 15 minutos e reistarta na primeira requisição posterior
+
+# Sobre
 Esse projeto é o frontend da aplicação de classificação de emails. Eu desenvolvi usando
 HTML, CSS e JavaScript, utilizando Tailwind CSS para acelerar a parte visual e manter
 consistência no layout, e em alguns pontos usei CSS puro principalmente para animações.

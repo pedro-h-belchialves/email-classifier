@@ -62,7 +62,7 @@ function handleDrop(event) {
   const file = event.dataTransfer.files[0];
   if (file) {
     if (!file.name.match(/\.(txt|pdf)$/i)) {
-      showError("Only .txt and .pdf files are supported.");
+      showError("Apenas arquivos .txt ou .pdf podem ser carregados.");
       return;
     }
     setFile(file);
@@ -193,7 +193,7 @@ function copyResponse() {
       }, 2200);
     })
     .catch(() => {
-      showError("Could not copy to clipboard. Please copy manually.");
+      showError("Não foi possível copiar o texto.");
     });
 }
 
@@ -230,12 +230,12 @@ async function classify() {
   if (currentTab === "text") {
     const text = document.getElementById("email-text").value.trim();
     if (!text) {
-      showError("Please paste an email before classifying.");
+      showError("Por favor, insira um texto antes de classificar.");
       return;
     }
   } else {
     if (!selectedFile) {
-      showError("Please upload a file before classifying.");
+      showError("Por favor, selecione um arquivo antes de classificar.");
       return;
     }
   }
