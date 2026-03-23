@@ -17,11 +17,16 @@ EXAMPLES = [
     {
         "email": "Preciso de ajuda com um problema de login",
         "category": "produtivo",
-        "response": "Recebemos sua solicitação e iremos analisá-la o mais breve possibile."
+        "response": "Recebemos sua solicitação e iremos analisá-la o mais breve possivel."
     },
     {
         "email": "Estou passando para desejar um Feliz Natal",
         "category": "improdutivo",
         "response": "Obrigado pela mensagem! Tambeém desejo um Feliz Natal!"
+    },
+    {
+        "email": "Preciso de ajuda com o suporte",
+        "category": "produtivo",
+        "response": "Recebemos sua solicitação e iremos encaminhar o suporte o mais breve possivel."
     }
 ]
