@@ -1,5 +1,6 @@
 from app.services.ai.factory import get_ai_provider
 from app.utils.json_parser import extract_json
+from app.schemas.email_schema import EmailResponse
 
 
 class ClassifyEmailUseCase:
@@ -26,4 +27,6 @@ class ClassifyEmailUseCase:
 
         parsed = extract_json(response)
 
-        return parsed
+           validated = EmailResponse(**parsed)
+
+        return validated
