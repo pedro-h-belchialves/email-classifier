@@ -2,6 +2,10 @@ from app.services.ai.factory import get_ai_provider
 from app.utils.json_parser import extract_json
 from app.schemas.email_schema import EmailResponse
 from app.services.ai.training_data import EXAMPLES
+from app.utils.logger import get_logger
+
+
+logger = get_logger(__name__)
 
 
 class ClassifyEmailUseCase:
@@ -11,6 +15,8 @@ class ClassifyEmailUseCase:
         
 
     def execute(self, content: str):
+        logger.info(f"Classifying email: {content}")
+
         examples_text = ""
 
         for example in EXAMPLES:
@@ -47,10 +53,13 @@ class ClassifyEmailUseCase:
         """
 
         response = self.ai_provider.generate(prompt)
+        logger.info(f"Ai response: {response}")
 
         parsed = extract_json(response)
+        logger.info(f"Parsed response: {parsed}")
 
         validated = EmailResponse(**parsed)
+        logger.info(f"Validated response: {parsed}")
 
         return validated
     
